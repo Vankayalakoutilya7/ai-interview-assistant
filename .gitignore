@@ -1,0 +1,14 @@
+# Node
+node_modules/
+build/
+
+# Java
+target/
+*.class
+
+# Python
+venv/
+__pycache__/
+
+# OS
+.DS_Store
