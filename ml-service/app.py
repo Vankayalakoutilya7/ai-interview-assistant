@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -25,5 +26,10 @@ def evaluate():
         "similarityScore": round(similarity * 100, 2)
     })
 
+
+def int(param):
+    pass
+
+
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
