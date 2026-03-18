@@ -1,5 +1,6 @@
 package com.interview.assistant.Client;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,9 +11,13 @@ public class MLServiceClient {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
+    // ✅ Correct placement
+    @Value("${ML_SERVICE_URL}")
+    private String mlServiceUrl;
+
     public double getSimilarityScore(String userAnswer, String modelAnswer) {
 
-        String url = "http://localhost:5000/evaluate";
+        String url = mlServiceUrl;
 
         Map<String, String> request = Map.of(
                 "userAnswer", userAnswer,
